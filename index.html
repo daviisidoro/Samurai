@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll of the Ronin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo"><i class="fas fa-scroll text-red"></i> RONIN</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#bushido">Virtudes</a></li>
+                    <li><a href="#society">Hierarquia</a></li>
+                    <li><a href="#gallery">Arte</a></li>
+                    <li><a href="#games">Dojo</a></li>
+                </ul>
+            </nav>
+            <a href="#footer" class="btn" style="font-size: 0.8rem;">Juramento</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content reveal">
+            <p style="color: var(--red-seal); font-weight: bold; text-transform: uppercase;">Pergaminho Histórico</p>
+            <h1>Caminho do <br><span class="text-red">Guerreiro</span></h1>
+            <p class="hero-desc">Entre a tinta e a espada, a honra é eterna.</p>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <button class="btn btn-primary" onclick="scrollToSection('games')">Entrar no Dojo</button>
+                <button class="btn" onclick="scrollToSection('bushido')">Ler Código</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="bushido" class="section-pad">
+        <div class="container grid-2">
+            <div class="text-block reveal">
+                <h2 class="section-title">O Bushido</h2>
+                <p>O pergaminho sagrado dita que um guerreiro deve ter compaixão e retidão. Sem a sabedoria da pena, a espada é apenas uma ferramenta de morte.</p>
+                <br>
+                <p><i class="fas fa-balance-scale text-red"></i> <strong>Gi:</strong> Retidão nas decisões.</p>
+                <p><i class="fas fa-heart text-red"></i> <strong>Jin:</strong> Benevolência com os fracos.</p>
+                <p><i class="fas fa-fist-raised text-red"></i> <strong>Yu:</strong> Coragem heroica.</p>
+            </div>
+            <div class="image-block reveal">
+                <img src="https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?q=80&w=800" alt="Capacete Samurai">
+            </div>
+        </div>
+    </section>
+
+    <section id="society" class="section-pad">
+        <div class="container">
+            <h2 class="section-title text-center">Ordem Imperial</h2>
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div class="rank-row reveal">
+                    <div class="rank-icon"><i class="fas fa-chess-king"></i></div>
+                    <div>
+                        <h3>Imperador</h3>
+                        <p>A voz dos deuses na terra.</p>
+                    </div>
+                </div>
+                <div class="rank-row reveal">
+                    <div class="rank-icon"><i class="fas fa-mask"></i></div>
+                    <div>
+                        <h3>Shogun</h3>
+                        <p>O comandante militar supremo.</p>
+                    </div>
+                </div>
+                <div class="rank-row reveal">
+                    <div class="rank-icon"><i class="fas fa-chess-rook"></i></div>
+                    <div>
+                        <h3>Daimyo</h3>
+                        <p>Senhores feudais das províncias.</p>
+                    </div>
+                </div>
+                <div class="rank-row reveal">
+                    <div class="rank-icon"><i class="fas fa-user-shield"></i></div>
+                    <div>
+                        <h3>Samurai</h3>
+                        <p>Protetores e guerreiros leais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section-pad" style="background: #fff;">
+        <div class="container">
+            <h2 class="section-title text-center">Gravuras</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1614713568397-b3010356e36d?q=80&w=600" alt="Espada"></div>
+                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=600" alt="Guerreiro"></div>
+                <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1528360983277-13d9b152c56e?q=80&w=600" alt="Templo"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="games" class="section-pad game-bg">
+        <div class="container">
+            <h2 class="section-title text-center">Desafios Mentais</h2>
+            
+            <div class="games-wrapper">
+                <div class="game-card reveal">
+                    <div class="game-header">
+                        <h3><i class="fas fa-bolt"></i> Reflexo</h3>
+                    </div>
+                    <div id="reflex-box" class="reflex-box">
+                        <span id="reflex-msg">Toque para Iniciar</span>
+                    </div>
+                    <p style="margin-top:10px; text-align:center;">Melhor: <span id="reflex-best">--</span> ms</p>
+                </div>
+
+                <div class="game-card reveal">
+                    <div class="game-header">
+                        <h3><i class="fas fa-brain"></i> Memória</h3>
+                        <button class="btn" onclick="initMemory()" style="padding: 2px 10px; font-size: 0.7rem;">Reset</button>
+                    </div>
+                    <div id="memory-board" class="memory-grid">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad text-center" style="border:none;">
+        <div class="container reveal">
+            <i class="fas fa-pen-fancy fa-2x text-red"></i>
+            <h2 class="section-title" style="font-size: 2rem; border:none; margin-top:10px;">Poesia</h2>
+            <br>
+            <div id="haiku-display" class="haiku-box">
+                <p>O velho lago;</p>
+                <p>Um sapo salta nele.</p>
+                <p>Som da água.</p>
+            </div>
+            <br>
+            <button class="btn" onclick="newHaiku()">Nova Poesia</button>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <h3 class="logo" style="margin-bottom: 20px; color: #e6dcc3;">O FIM DO PERGAMINHO</h3>
+            <div class="socials">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            <p style="opacity: 0.7; margin-top: 20px;">&copy; 2026. Tinta e Papel.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

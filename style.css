@@ -1,0 +1,234 @@
+/* --- 1. PALETA PERGAMINHO (INK & PAPER) --- */
+:root {
+    --bg-paper: #e6dcc3;       /* Cor base do pergaminho */
+    --bg-paper-dark: #d1c4a5;  /* Cor de áreas secundárias */
+    --ink-main: #2b2319;       /* Marrom quase preto (Tinta Nanquim) */
+    --ink-light: #594a36;      /* Tinta diluída */
+    --red-seal: #8a1c1c;       /* Vermelho Carimbo (Hanko) */
+    --gold-accent: #b08d55;    /* Ouro envelhecido */
+    
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Noto Serif JP', serif;
+    
+    /* Textura sutil de papel */
+    --paper-texture: 
+        linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0)),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body { 
+    background-color: var(--bg-paper);
+    background-image: var(--paper-texture); /* Adiciona ruído visual */
+    color: var(--ink-main); 
+    font-family: var(--font-body); 
+    line-height: 1.7; 
+    border: 20px solid var(--bg-paper-dark); /* Borda "moldura" na tela inteira */
+    min-height: 100vh;
+}
+
+/* --- 2. UTILITÁRIOS --- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.section-pad { padding: 80px 0; border-bottom: 2px solid var(--ink-light); }
+.text-center { text-align: center; }
+.text-red { color: var(--red-seal); }
+
+/* Títulos estilo Caligrafia */
+.section-title {
+    font-family: var(--font-title);
+    font-size: 2.8rem;
+    color: var(--ink-main);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    border-bottom: 3px double var(--red-seal);
+    padding-bottom: 10px;
+}
+
+/* Botões Tinta e Papel */
+.btn {
+    padding: 12px 30px;
+    font-family: var(--font-title);
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid var(--ink-main);
+    background: transparent;
+    color: var(--ink-main);
+    box-shadow: 4px 4px 0 var(--ink-light);
+}
+.btn:hover { 
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink-light);
+    background: var(--ink-main);
+    color: var(--bg-paper);
+}
+
+.btn-primary { 
+    background: var(--red-seal); 
+    border-color: var(--red-seal);
+    color: #fff;
+    box-shadow: 4px 4px 0 var(--ink-main);
+}
+.btn-primary:hover {
+    background: #a32222;
+    color: #fff;
+}
+
+/* --- 3. HEADER --- */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--bg-paper);
+    border-bottom: 4px double var(--ink-main);
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-title); font-size: 1.8rem; color: var(--ink-main); font-weight: 900; }
+.nav-links { list-style: none; display: flex; gap: 30px; }
+.nav-links a { color: var(--ink-main); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; }
+.nav-links a:hover { color: var(--red-seal); text-decoration: line-through; }
+
+/* --- 4. HERO SECTION (Sem imagem de fundo) --- */
+.hero {
+    height: 90vh;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    background: radial-gradient(circle, var(--bg-paper) 0%, var(--bg-paper-dark) 100%);
+    position: relative;
+    border-bottom: 2px solid var(--ink-main);
+}
+/* Moldura interna decorativa */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 40px; bottom: 40px; left: 40px; right: 40px;
+    border: 2px solid var(--ink-main);
+    pointer-events: none;
+}
+.hero-content { z-index: 2; max-width: 700px; padding: 40px; background: rgba(230, 220, 195, 0.9); }
+.hero h1 { 
+    font-size: 4.5rem; 
+    line-height: 1.1; 
+    color: var(--ink-main); 
+    margin-bottom: 20px; 
+    font-weight: 900;
+}
+.hero-desc { font-size: 1.4rem; color: var(--ink-light); margin-bottom: 40px; font-style: italic; }
+
+/* --- 5. SEÇÕES GERAIS --- */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+/* Imagens Estilo Gravura */
+.image-block img { 
+    width: 100%; 
+    border: 10px solid #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    filter: sepia(0.6) contrast(1.1); /* Efeito sépia forte */
+    transition: 0.5s;
+}
+.image-block img:hover { filter: sepia(0); }
+
+/* Hierarquia */
+.rank-row {
+    background: #fff;
+    border: 1px solid var(--ink-main);
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex; align-items: center; gap: 20px;
+    box-shadow: 5px 5px 0 rgba(43, 35, 25, 0.1);
+}
+.rank-icon { font-size: 1.5rem; color: var(--red-seal); width: 40px; text-align: center; }
+
+/* Galeria */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.gallery-item img { 
+    width: 100%; height: 250px; object-fit: cover; 
+    border: 4px solid var(--ink-main);
+    filter: grayscale(100%);
+    transition: 0.4s;
+}
+.gallery-item:hover img { filter: grayscale(0%); transform: scale(1.02); }
+
+/* --- 6. JOGOS (DOJO) --- */
+.game-bg { background-color: var(--bg-paper-dark); }
+.games-wrapper { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
+
+.game-card {
+    background: var(--bg-paper);
+    border: 3px solid var(--ink-main);
+    padding: 30px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    box-shadow: 8px 8px 0 var(--ink-light);
+}
+.game-header { border-bottom: 2px dashed var(--ink-light); margin-bottom: 20px; padding-bottom: 10px; display: flex; justify-content: space-between; }
+.game-header h3 { color: var(--red-seal); font-family: var(--font-title); }
+
+/* Jogo Reflexo */
+.reflex-box {
+    height: 180px;
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem; font-weight: bold; font-family: var(--font-title);
+    border: 2px solid var(--ink-main);
+    transition: 0.2s;
+    text-transform: uppercase;
+}
+.reflex-box.wait { background: var(--ink-main); color: #fff; border-color: var(--ink-main); }
+.reflex-box.go { background: #fff; color: var(--red-seal); border: 5px solid var(--red-seal); }
+
+/* Jogo Memória */
+.memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; height: 280px; }
+.memory-card { 
+    background: var(--ink-main); 
+    border: 2px solid var(--gold-accent); 
+    cursor: pointer; 
+    display: flex; align-items: center; justify-content: center; 
+    color: var(--gold-accent);
+    font-size: 1.2rem;
+}
+.memory-card.flipped { background: #fff; color: var(--ink-main); border-color: var(--ink-main); }
+
+/* --- 7. FOOTER & EXTRAS --- */
+.haiku-box { 
+    font-family: 'Brush Script MT', cursive; 
+    font-size: 1.8rem; 
+    color: var(--ink-main); 
+    min-height: 120px; 
+    margin: 30px 0;
+    border-left: 4px solid var(--red-seal);
+    padding-left: 20px;
+    display: inline-block;
+    text-align: left;
+}
+
+footer { 
+    background: var(--ink-main); 
+    color: var(--bg-paper); 
+    padding: 60px 0; 
+    text-align: center; 
+    border-top: 5px solid var(--red-seal);
+}
+.socials a { color: var(--bg-paper); margin: 0 15px; font-size: 1.5rem; transition: 0.3s; }
+.socials a:hover { color: var(--red-seal); }
+
+/* Responsivo */
+@media (max-width: 768px) {
+    body { border: none; } /* Remove borda em telas pequenas */
+    .hero h1 { font-size: 3rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+/* Animações */
+.reveal { opacity: 0; transform: translateY(20px); transition: 0.8s; }
+.reveal.active { opacity: 1; transform: translateY(0); }
